@@ -50,3 +50,24 @@ Report.change_college("XYZ College")
 
 student2 = Report("Priya", 102, 35)
 student2.display_report()
+
+#comments
+***************************************
+      STUDENT RESULT
+****************************************
+College : ABC College
+Name : Rahul
+Roll No : 101
+Marks : 85
+Status : PASS
+****************************************
+
+****************************************
+      STUDENT RESULT
+****************************************
+College : XYZ College
+Name : Priya
+Roll No : 102
+Marks : 35
+Status : FAIL
+****************************************
