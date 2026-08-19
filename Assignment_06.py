@@ -1,4 +1,4 @@
-# 0/1 Knapsack using Dynamic Programming
+#Knapsack using Dynamic Programming
 
 weights = [1, 3, 4, 6]
 values = [2, 6, 7, 10]
