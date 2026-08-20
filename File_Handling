@@ -1,0 +1,32 @@
+file_name = "1st.txt"
+
+# Create and write into the file
+f = open(file_name, "w")
+f.write("Welcome to the first line.\n")
+f.write("This is another line in the file.\n")
+f.close()
+
+print("File created and written successfully.\n")
+
+# Display the current contents
+f = open(file_name, "r")
+data = f.read()
+f.close()
+
+print("Contents before appending:\n")
+print(data)
+
+# Add new content without deleting the existing data
+f = open(file_name, "a")
+f.write("This is the newly added line.\n")
+f.close()
+
+print("Content appended successfully.\n")
+
+# Read again to check the updated file
+f = open(file_name, "r")
+updated_data = f.read()
+f.close()
+
+print("Contents after appending:\n")
+print(updated_data)
