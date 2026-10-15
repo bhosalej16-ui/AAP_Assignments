@@ -1,0 +1,75 @@
+import argparse
+import csv
+
+
+def display_all_records(filename):
+  """Reads and displays all student records from the CSV file."""
+  try:
+    with open(filename, mode='r', newline='', encoding='utf-8') as file:
+      reader = csv.DictReader(file)
+      print(f'\n--- Student Records from {filename} ---')
+      records_found = False
+      for row in reader:
+        records_found = True
+        print(row)
+      if not records_found:
+        print('The file is empty.')
+  except FileNotFoundError:
+    print(f'Error: The file "{filename}" was not found.')
+
+
+def search_by_roll_no(filename, roll_no):
+  """Searches for a student record by Roll Number."""
+  try:
+    with open(filename, mode='r', newline='', encoding='utf-8') as file:
+      reader = csv.DictReader(file)
+      found = False
+      for row in reader:
+        # Assuming the CSV has a column named 'RollNo' or 'Roll Number'
+        # Adjust 'RollNo' to match your exact CSV header name
+        if row.get('RollNo', '').strip() == str(roll_no).strip():
+          print('\n--- Student Found ---')
+          for key, value in row.items():
+            print(f'{key}: {value}')
+          found = True
+          break
+      if not found:
+        print(f'\nNo student record found with Roll Number: {roll_no}')
+  except FileNotFoundError:
+    print(f'Error: The file "{filename}" was not found.')
+
+
+def main():
+  parser = argparse.ArgumentParser(
+      description='Student Record Management System'
+  )
+  parser.add_argument(
+      '--file',
+      required=True,
+      help='Path to the students.csv file',
+      default='students.csv',
+  )
+  parser.add_argument(
+      '--roll', help='Roll Number to search for a specific student'
+  )
+  parser.add_argument(
+      '--all',
+      action='store_true',
+      help='Display all student records',
+  )
+
+  args = parser.parse_args()
+
+  if args.all:
+    display_all_records(args.file)
+
+  if args.roll:
+    search_by_roll_no(args.file, args.roll)
+
+  if not args.all and not args.roll:
+    # Default behavior: display all if no specific action is passed
+    display_all_records(args.file)
+
+
+if __name__ == '__main__':
+  main()
