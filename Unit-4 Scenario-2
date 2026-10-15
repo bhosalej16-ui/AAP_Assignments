@@ -1,0 +1,20 @@
+import numpy as np
+import pandas as pd
+
+patients = ["Amit", "Rahul", "Priya", "Sneha", "Rohan"]
+costs = np.array([15000, 25000, 18000, 35000, 22000])
+
+print("Mean Treatment Cost:", np.mean(costs))
+print("Maximum Treatment Cost:", np.max(costs))
+print("Minimum Treatment Cost:", np.min(costs))
+
+df = pd.DataFrame({
+    "Patient": patients,
+    "Treatment Cost": costs
+})
+
+print("\nAll Patient Records:")
+print(df)
+
+print("\nPatients with Treatment Cost Above 20000:")
+print(df[df["Treatment Cost"] > 20000])
